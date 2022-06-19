@@ -52,16 +52,20 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
         <Box position="relative" mb="72px">
           <TextField
             sx={{
-              input: { fontWeight: 700, border: "none", borderRadius: "4px" },
-              width: { lg: "800px", xs: "350px" },
-              backgroundColor: "#fff",
-              borderRadius: "40px",
+              input: {
+                fontWeight: 700,
+                border: "none",
+                borderRadius: "4px",
+                height: { lg: "1.5rem", xs: "1rem" },
+              },
+              width: { lg: "800px", xs: "450px" },
+              backgroundColor: "white",
             }}
-            height="76px"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value.toLowerCase());
             }}
+            onSubmit={handleSearch}
             placeholder="Search Exercises"
             type="text"
           />
@@ -71,9 +75,10 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
               bgcolor: "#ff2625",
               color: "#fff",
               textTransform: "none",
-              width: { lg: "175px", xs: "80px" },
+              width: { lg: "175px", xs: "30%" },
               fontSize: { lg: "20px", xs: "14px" },
-              height: "56px",
+              height: "100%",
+              alignItems: "center",
               position: "absolute",
               right: "0",
             }}
