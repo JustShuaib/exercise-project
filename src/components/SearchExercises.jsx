@@ -49,7 +49,7 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
         >
           Awesome Exercises you <br /> Should Know
         </Typography>
-        <Box position="relative" mb="72px">
+        <Box position="relative" mb="72px" width="100%" maxWidth="1200px">
           <TextField
             sx={{
               input: {
@@ -58,8 +58,10 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
                 borderRadius: "4px",
                 height: { lg: "1.5rem", xs: "1rem" },
               },
-              width: { lg: "800px", xs: "450px" },
+              // width: { lg: "800px", xs: "70%" },
+              width: "70%",
               backgroundColor: "white",
+              borderRight: "none",
             }}
             value={search}
             onChange={(e) => {
