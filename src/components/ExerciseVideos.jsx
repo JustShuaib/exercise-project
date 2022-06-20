@@ -3,8 +3,13 @@ import { Box, Stack, Typography } from "@mui/material";
 const ExerciseVideos = ({ exerciseVideos, name }) => {
   if (!exerciseVideos?.length)
     return (
-      <Typography variant="h4" component="h1">
-        Loading exercise videos
+      <Typography
+        variant="h5"
+        component="h2"
+        fontWeight={700}
+        textAlign="center"
+      >
+        Loading exercise videos...
       </Typography>
     );
   return (
@@ -20,7 +25,7 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
         justifyContent="start"
         flexWrap="wrap"
         alignItems="center"
-        sx={{ flexDirection: { lg: "row", gap: { lg: "110px", xs: "10px" } } }}
+        sx={{ flexDirection: { lg: "row" }, gap: { lg: "110px", xs: "10px" } }}
       >
         {exerciseVideos?.slice(0, 6).map((item, index) => (
           <a
