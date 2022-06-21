@@ -44,31 +44,25 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
           fontWeight={700}
           mb="50px"
           sx={{
-            fontSize: { lg: "44px", xs: "30px" },
+            fontSize: { lg: "2.5rem", xs: "1.8rem" },
           }}
         >
           Awesome Exercises you <br /> Should Know
         </Typography>
-        <Box position="relative" mb="72px" width="100%" maxWidth="1200px">
+        <Box position="relative" mb="72px" width="100%" maxWidth="950px">
           <TextField
             sx={{
               input: {
-                fontWeight: 700,
-                border: "none",
                 borderRadius: "4px",
                 height: { lg: "1.5rem", xs: "1rem" },
               },
-              // width: { lg: "800px", xs: "70%" },
               width: "70%",
               backgroundColor: "white",
-              borderRight: "none",
             }}
             value={search}
-            onChange={(e) => {
-              setSearch(e.target.value.toLowerCase());
-            }}
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
             onSubmit={handleSearch}
-            placeholder="Search Exercises"
+            placeholder="Search Exercises..."
             type="text"
           />
           <Button
@@ -76,20 +70,20 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
             sx={{
               bgcolor: "#ff2625",
               color: "#fff",
-              textTransform: "none",
-              width: { lg: "175px", xs: "30%" },
-              fontSize: { lg: "20px", xs: "14px" },
+              textTransform: "capitalize",
+              width: "30%",
+              fontSize: { lg: "1.2rem", xs: "1rem" },
               height: "100%",
-              alignItems: "center",
               position: "absolute",
               right: "0",
+              font: "inherit",
             }}
             onClick={handleSearch}
           >
             Search
           </Button>
         </Box>
-        <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
+        <Box sx={{ position: "relative", width: "100%", p: "1.2rem" }}>
           <HorizontalScrollBar
             bodyParts={bodyParts}
             bodyPart={bodyPart}
