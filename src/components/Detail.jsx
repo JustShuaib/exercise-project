@@ -34,7 +34,7 @@ const Detail = ({ exerciseDetail }) => {
           target your {target}. It will help you improve your mood and gain
           energy.
         </Typography>
-        {extraDetail.map((detail) => (
+        {extraDetail?.map((detail) => (
           <Stack
             key={detail.name}
             direction="row"
