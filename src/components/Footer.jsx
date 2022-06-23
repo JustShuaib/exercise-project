@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/images/Logo.png";
 const Footer = () => {
   return (
     <Box mt="3rem" bgcolor="#fff3f4">
