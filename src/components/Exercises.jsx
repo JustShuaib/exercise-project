@@ -36,7 +36,7 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
   }, [bodyPart]);
 
   return (
-    <Box id="exercises" mt="50px" p="20px" xs={{ mt: { lg: "110px" } }}>
+    <Box id="exercises" mt="50px" p="2px" xs={{ mt: { lg: "110px" } }}>
       {" "}
       {exercises.length > 0 && (
         <Typography mb="46px" fontSize="2rem" fontWeight="bold">

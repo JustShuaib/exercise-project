@@ -1,10 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material";
-import Logo from "../assets/images/Logo.png";
+import Logo from "../assets/icons/logo.png";
+
 const Footer = () => {
   return (
     <Box mt="3rem" bgcolor="#fff3f4">
       <Stack alignItems="center" px="5rem" pt="3rem">
-        <img src={Logo} alt="logo" />
+        <img src={Logo} alt="logo" width="80rem" />
         <Typography variant="h5" pb="3rem" mt="2rem">
           Made with ❤️by{" "}
           <a
