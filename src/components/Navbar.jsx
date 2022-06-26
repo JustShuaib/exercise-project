@@ -11,11 +11,7 @@ const Navbar = () => (
     width={{ xs: "100%", lg: "35rem" }}
   >
     <Link to="/">
-      <img
-        src={Logo}
-        alt="logo"
-        style={{ width: "3rem", marginLeft: "1.4rem" }}
-      />
+      <img src={Logo} alt="logo" style={{ width: "3rem" }} />
     </Link>
     <Stack direction="row" gap="2.5rem" fontSize="1.5rem">
       <Link
