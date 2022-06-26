@@ -3,10 +3,11 @@ import { Stack } from "@mui/material";
 import Logo from "../assets/icons/logo.png";
 const Navbar = () => (
   <Stack
+    component="nav"
     direction="row"
     justifyContent="space-between"
     alignItems="center"
-    mt={{ xs: "1.5rem", sm: "2rem" }}
+    mt={{ xs: "1.5rem", md: "2rem" }}
     px="1.4rem"
     width={{ xs: "100%", lg: "35rem" }}
   >
