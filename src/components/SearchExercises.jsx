@@ -3,6 +3,7 @@ import { Stack, Typography, Box, Button, TextField } from "@mui/material";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 
 import { exerciseOptions, fetchData } from "../utils/fetchData";
+
 const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
   const [search, setSearch] = useState("");
   const [bodyParts, setBodyParts] = useState([]);
@@ -38,23 +39,31 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
   };
   return (
     <Box>
-      <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
+      <Stack alignItems="center" justifyContent="center" p="1.4rem">
         <Typography
+          component="h2"
           textAlign="center"
           fontWeight={700}
-          mb="50px"
+          mb="3.125rem"
+          mt={{ xs: "2rem", lg: "10rem" }}
           sx={{
             fontSize: { lg: "2.5rem", xs: "1.8rem" },
           }}
         >
           Awesome Exercises you <br /> Should Know
         </Typography>
-        <Box position="relative" mb="72px" width="100%" maxWidth="950px">
+        <Box
+          component="form"
+          position="relative"
+          mb="4.5rem"
+          width="100%"
+          maxWidth="59.4rem"
+        >
           <TextField
             sx={{
               input: {
-                borderRadius: "4px",
                 height: { lg: "1.5rem", xs: "1rem" },
+                fontFamily: "Josefin Sans",
               },
               width: "70%",
               backgroundColor: "white",
