@@ -1,66 +1,54 @@
-import React from "react";
-import { Box, Stack, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import HeroBannerImage from "../assets/images/banner.png";
 
-const HeroBanner = () => {
-  return (
-    <Box
-      sx={{
-        mt: {
-          lg: "212px",
-          xs: "70px",
-        },
-        ml: {
-          sm: "50px",
-        },
-      }}
-      position="relative"
-      p="20px"
+const HeroBanner = () => (
+  <Box
+    component="header"
+    sx={{
+      mt: "5rem",
+      ml: { sm: "3.125rem" },
+    }}
+    position="relative"
+    p="1.4rem"
+  >
+    <Typography
+      color="#ff2625"
+      component="h1"
+      fontWeight={600}
+      fontSize="2rem"
+      fontFamily="inherit"
+      letterSpacing="0.1rem"
     >
-      <Typography color="#ff2625" fontWeight="600" fontSize="26px">
-        Fitness Club
-      </Typography>
-      <Typography
-        fontWeight={700}
-        sx={{
-          fontSize: {
-            lg: "44px",
-            xs: "40px",
-          },
-        }}
-        mb="23px"
-        mt="30px"
-      >
-        Sweat, Smile <br /> and Repeat
-      </Typography>
-      <Typography mb={4} lineHeight="35px" fontSize="22px">
-        Check out the most effective exercises
-      </Typography>
-      <Button
-        variant="contained"
-        color="error"
-        href="#exercises"
-        sx={{ backgroundColor: "#ff2625", padding: "10px" }}
-      >
-        Explore Exercises
-      </Button>
-      <Typography
-        fontWeight={600}
-        color="#ff2626"
-        sx={{
-          opacity: 0.1,
-          display: {
-            lg: "block",
-            xs: "none",
-          },
-        }}
-        fontSize="200px"
-      >
-        Exercises
-      </Typography>
-      <img src={HeroBannerImage} alt="banner" className="hero-banner-img" />
-    </Box>
-  );
-};
+      Fitness Club
+    </Typography>
+    <Typography fontWeight={700} fontSize="2.5rem" my="1.7rem">
+      Sweat, Smile <br /> and Repeat
+    </Typography>
+    <Typography mb={4} fontSize="1.4rem">
+      Check out the most effective exercises
+    </Typography>
+    <Button
+      variant="contained"
+      color="error"
+      href="#exercises"
+      sx={{ backgroundColor: "#ff2625", padding: "10px" }}
+    >
+      Explore Exercises
+    </Button>
+    <Typography
+      fontWeight={600}
+      color="#ff2626"
+      mt="3rem"
+      sx={{
+        opacity: 0.1,
+        display: { xs: "none", lg: "block" },
+      }}
+      fontSize="12.5rem"
+    >
+      Exercises
+    </Typography>
+    <img src={HeroBannerImage} alt="banner" className="hero-banner-img" />
+  </Box>
+);
 
 export default HeroBanner;
