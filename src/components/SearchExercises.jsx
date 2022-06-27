@@ -20,7 +20,8 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
     fetchExercisesData();
   }, []);
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     if (search) {
       const exerciseData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
@@ -34,7 +35,11 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
           exercise.bodyPart.toLowerCase().includes(search)
       );
       setSearch("");
+      setBodyPart(search);
       setExercises(searchExercises);
+      document
+        .getElementById("exercises")
+        .scrollIntoView({ behavior: "smooth" });
     }
   };
   return (
@@ -58,6 +63,7 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
           mb="4.5rem"
           width="100%"
           maxWidth="59.4rem"
+          onSubmit={handleSearch}
         >
           <TextField
             sx={{
@@ -70,12 +76,12 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
             }}
             value={search}
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
-            onSubmit={handleSearch}
             placeholder="Search Exercises..."
             type="text"
           />
           <Button
             className="search-btn"
+            type="submit"
             sx={{
               bgcolor: "#ff2625",
               color: "#fff",
@@ -87,7 +93,6 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
               right: "0",
               font: "inherit",
             }}
-            onClick={handleSearch}
           >
             Search
           </Button>
