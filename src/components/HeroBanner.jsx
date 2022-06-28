@@ -1,4 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
+import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import HeroBannerImage from "../assets/images/banner.png";
 
 const HeroBanner = () => (
@@ -31,7 +32,12 @@ const HeroBanner = () => (
       variant="contained"
       color="error"
       href="#exercises"
-      sx={{ bgcolor: "#ff2625", padding: "10px" }}
+      sx={{
+        bgcolor: "#ff2625",
+        py: { xs: "0.6rem", lg: "0.8rem" },
+        px: { xs: "0.8rem", lg: "1rem" },
+      }}
+      endIcon={<DirectionsBikeIcon />}
     >
       Explore Exercises
     </Button>
