@@ -5,11 +5,33 @@ import HorizontalScrollBar from "./HorizontalScrollBar";
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import Loader from "./Loader";
 
-const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
+const SearchExercises = ({
+  bodyPart,
+  setBodyPart,
+  setExercises,
+  error,
+  setError,
+}) => {
   const [search, setSearch] = useState("");
   const [bodyParts, setBodyParts] = useState([]);
-  const [error, setError] = useState(false);
 
+  /*   const fetchExercisesData = async () => {
+    try {
+      const bodyPartData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+        exerciseOptions
+      );
+      setBodyParts(["all", ...bodyPartData]);
+      setError(false);
+    } catch (e) {
+      setError(`${e.message} exercises`);
+    }
+  }; */
+
+  // useEffect(() => {
+  //   fetchExercisesData();
+  // }, []);
+  /* ----- NEW IMPLEMENTATIONS --------------------------------*/
   const fetchExercisesData = async () => {
     try {
       const bodyPartData = await fetchData(
@@ -21,12 +43,25 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
     } catch (e) {
       setError(`${e.message} exercises`);
     }
+    let exercisesData = [];
+    if (bodyPart === "all") {
+      exercisesData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises",
+        exerciseOptions
+      );
+    } else {
+      exercisesData = await fetchData(
+        `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+        exerciseOptions
+      );
+    }
+    setExercises(exercisesData);
   };
 
   useEffect(() => {
     fetchExercisesData();
-  }, []);
-
+  }, [bodyPart]);
+  /* ----------- END OF NEW IMPLEMENTATIONS ---------------*/
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search) {
@@ -113,26 +148,6 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
               setBodyPart={setBodyPart}
               isBodyParts
             />
-          )}
-          {error && (
-            <Box textAlign="center">
-              <Typography
-                fontSize={{ xs: "1.6rem", lg: "2.5rem" }}
-                color="#ff2625"
-                fontFamily="Josefin Sans"
-                gutterBottom
-              >
-                {error}
-              </Typography>
-              <Button
-                onClick={fetchExercisesData}
-                size="large"
-                variant="contained"
-                sx={{ bgcolor: "#ff2625" }}
-              >
-                Retry
-              </Button>
-            </Box>
           )}
         </Box>
       </Stack>

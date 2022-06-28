@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import ExerciseCard from "./ExerciseCard";
-import { exerciseOptions, fetchData } from "../utils/fetchData";
 
-const Exercises = ({ exercises, bodyPart, setExercises }) => {
+const Exercises = ({ exercises, bodyPart, error }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -17,27 +16,18 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
     setCurrentPage(value);
     document.getElementById("exercises").scrollIntoView({ behavior: "smooth" });
   };
-  useEffect(() => {
-    const fetchExercisesData = async () => {
-      let exercisesData = [];
-      if (bodyPart === "all") {
-        exercisesData = await fetchData(
-          "https://exercisedb.p.rapidapi.com/exercises",
-          exerciseOptions
-        );
-      } else {
-        exercisesData = await fetchData(
-          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
-          exerciseOptions
-        );
-      }
-      setExercises(exercisesData);
-    };
-    fetchExercisesData();
-  }, [bodyPart]);
 
-  return (
-    <Box id="exercises" p="2px" xs={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
+  return exercises.length === 0 && !error ? (
+    <Box textAlign="center">
+      <Typography
+        fontSize={{ xs: "1.4rem", lg: "1.8rem" }}
+        fontFamily="Josefin Sans"
+      >
+        No such exercise exist :(
+      </Typography>
+    </Box>
+  ) : (
+    <Box id="exercises" p="2px" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
       {" "}
       {exercises.length > 0 && (
         <Typography mb="2.875rem" fontSize="2rem" fontWeight={700}>
@@ -49,13 +39,13 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
         direction="row"
         flexWrap="wrap"
         justifyContent="center"
-        sx={{ gap: { lg: "40px", xs: "50px" } }}
+        sx={{ gap: { lg: "2.5rem", xs: "3.125rem" } }}
       >
         {currentExercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </Stack>
-      <Stack mt="100px" alignItems="center">
+      <Stack mt="6.25rem" alignItems="center">
         {exercises.length > exercisesPerPage && (
           <Pagination
             color="standard"

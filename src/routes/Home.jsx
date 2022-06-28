@@ -6,21 +6,49 @@ import SearchExercises from "../components/SearchExercises";
 const Home = () => {
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
+  const [error, setError] = useState(false);
 
+  const fetchExercisesData = () => {};
   return (
     <Box>
       <HeroBanner />
       <main>
-        <SearchExercises
-          setExercises={setExercises}
-          bodyPart={bodyPart}
-          setBodyPart={setBodyPart}
-        />
-        <Exercises
-          setExercises={setExercises}
-          bodyPart={bodyPart}
-          exercises={exercises}
-        />
+        {error ? (
+          <Box textAlign="center">
+            <Typography
+              fontSize={{ xs: "1.6rem", lg: "2.5rem" }}
+              color="#ff2625"
+              fontFamily="Josefin Sans"
+              gutterBottom
+            >
+              {error}
+            </Typography>
+            <Button
+              onClick={fetchExercisesData}
+              size="large"
+              variant="contained"
+              sx={{ bgcolor: "#ff2625" }}
+            >
+              Retry
+            </Button>
+          </Box>
+        ) : (
+          <>
+            <SearchExercises
+              setExercises={setExercises}
+              bodyPart={bodyPart}
+              setBodyPart={setBodyPart}
+              error={error}
+              setError={setError}
+            />
+            <Exercises
+              setExercises={setExercises}
+              bodyPart={bodyPart}
+              exercises={exercises}
+              error={error}
+            />
+          </>
+        )}
       </main>
     </Box>
   );
