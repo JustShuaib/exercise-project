@@ -3,20 +3,27 @@ import { Stack, Typography, Box, Button, TextField } from "@mui/material";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 
 import { exerciseOptions, fetchData } from "../utils/fetchData";
+import Loader from "./Loader";
 
 const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
   const [search, setSearch] = useState("");
   const [bodyParts, setBodyParts] = useState([]);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const fetchExercisesData = async () => {
+  const fetchExercisesData = async () => {
+    try {
       const bodyPartData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exerciseOptions
       );
       setBodyParts(["all", ...bodyPartData]);
-    };
+      setError(false);
+    } catch (e) {
+      setError(`${e.message} exercises`);
+    }
+  };
 
+  useEffect(() => {
     fetchExercisesData();
   }, []);
 
@@ -37,9 +44,7 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
       setSearch("");
       setBodyPart(search);
       setExercises(searchExercises);
-      document
-        .getElementById("exercises")
-        .scrollIntoView({ behavior: "smooth" });
+      document.getElementById("exercises").scrollIntoView();
     }
   };
   return (
@@ -70,6 +75,7 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
               input: {
                 height: { lg: "1.5rem", xs: "1rem" },
                 fontFamily: "Josefin Sans",
+                fontSize: { xs: "1.2rem", lg: "1.4rem" },
               },
               width: "70%",
               backgroundColor: "white",
@@ -98,12 +104,36 @@ const SearchExercises = ({ bodyPart, setBodyPart, setExercises }) => {
           </Button>
         </Box>
         <Box sx={{ position: "relative", width: "100%", p: "1.2rem" }}>
-          <HorizontalScrollBar
-            bodyParts={bodyParts}
-            bodyPart={bodyPart}
-            setBodyPart={setBodyPart}
-            isBodyParts
-          />
+          {bodyParts.length === 0 && !error ? (
+            <Loader color="#ff2625" />
+          ) : (
+            <HorizontalScrollBar
+              bodyParts={bodyParts}
+              bodyPart={bodyPart}
+              setBodyPart={setBodyPart}
+              isBodyParts
+            />
+          )}
+          {error && (
+            <Box textAlign="center">
+              <Typography
+                fontSize={{ xs: "1.6rem", lg: "2.5rem" }}
+                color="#ff2625"
+                fontFamily="Josefin Sans"
+                gutterBottom
+              >
+                {error}
+              </Typography>
+              <Button
+                onClick={fetchExercisesData}
+                size="large"
+                variant="contained"
+                sx={{ bgcolor: "#ff2625" }}
+              >
+                Retry
+              </Button>
+            </Box>
+          )}
         </Box>
       </Stack>
     </Box>

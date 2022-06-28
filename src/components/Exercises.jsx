@@ -15,7 +15,7 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
   );
   const paginate = (_, value) => {
     setCurrentPage(value);
-    window.scrollTo({ top: 1800, behavior: "smooth" });
+    document.getElementById("exercises").scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
     const fetchExercisesData = async () => {
