@@ -32,44 +32,33 @@ const SearchExercises = ({
   //   fetchExercisesData();
   // }, []);
   /* ----- NEW IMPLEMENTATIONS --------------------------------*/
+  let exercisesData = [];
   const fetchExercisesData = async () => {
     try {
-      const bodyPartData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exerciseOptions
-      );
-      setBodyParts(["all", ...bodyPartData]);
-      setError(false);
-    } catch (e) {
-      setError(`${e.message} exercises`);
-    }
-    let exercisesData = [];
-    if (bodyPart === "all") {
       exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseOptions
       );
-    } else {
-      exercisesData = await fetchData(
-        `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
-        exerciseOptions
-      );
+      const bodyPartList = [
+        ...new Set(exercisesData.map((exercise) => exercise.bodyPart)),
+      ];
+      setExercises(exercisesData);
+      setBodyParts(["all", ...bodyPartList]);
+      setError("");
+    } catch (e) {
+      setError(`${e.message} exercises`);
+      setBodyParts([]);
     }
-    setExercises(exercisesData);
   };
 
   useEffect(() => {
     fetchExercisesData();
-  }, [bodyPart]);
+  }, []);
   /* ----------- END OF NEW IMPLEMENTATIONS ---------------*/
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search) {
-      const exerciseData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises",
-        exerciseOptions
-      );
-      const searchExercises = exerciseData.filter(
+      const searchExercises = exercisesData.filter(
         (exercise) =>
           exercise.name.toLowerCase().includes(search) ||
           exercise.target.toLowerCase().includes(search) ||
@@ -81,6 +70,17 @@ const SearchExercises = ({
       setExercises(searchExercises);
       document.getElementById("exercises").scrollIntoView();
     }
+  };
+  const handleFilter = (bodyPart) => {
+    let modifiedList = [];
+    if (bodyPart === "all") {
+      modifiedList = [...exercisesData];
+    } else {
+      modifiedList = exercisesData.filter(
+        (exercise) => exercise.bodyPart === bodyPart
+      );
+    }
+    setExercises(modifiedList);
   };
   return (
     <Box>

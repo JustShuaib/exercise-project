@@ -7,7 +7,6 @@ const Home = () => {
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
   const [error, setError] = useState(false);
-
   const fetchExercisesData = () => {};
   return (
     <Box>
@@ -42,7 +41,6 @@ const Home = () => {
               setError={setError}
             />
             <Exercises
-              setExercises={setExercises}
               bodyPart={bodyPart}
               exercises={exercises}
               error={error}
