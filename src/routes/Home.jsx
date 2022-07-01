@@ -35,6 +35,7 @@ const Home = () => {
           <>
             <SearchExercises
               setExercises={setExercises}
+              exercises={exercises}
               bodyPart={bodyPart}
               setBodyPart={setBodyPart}
               error={error}

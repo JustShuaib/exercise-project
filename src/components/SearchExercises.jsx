@@ -8,34 +8,18 @@ import Loader from "./Loader";
 const SearchExercises = ({
   bodyPart,
   setBodyPart,
+  exercises,
   setExercises,
   error,
   setError,
 }) => {
   const [search, setSearch] = useState("");
   const [bodyParts, setBodyParts] = useState([]);
+  const [exerciseList, setExerciseList] = useState([]);
 
-  /*   const fetchExercisesData = async () => {
-    try {
-      const bodyPartData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exerciseOptions
-      );
-      setBodyParts(["all", ...bodyPartData]);
-      setError(false);
-    } catch (e) {
-      setError(`${e.message} exercises`);
-    }
-  }; */
-
-  // useEffect(() => {
-  //   fetchExercisesData();
-  // }, []);
-  /* ----- NEW IMPLEMENTATIONS --------------------------------*/
-  let exercisesData = [];
   const fetchExercisesData = async () => {
     try {
-      exercisesData = await fetchData(
+      const exercisesData = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseOptions
       );
@@ -43,6 +27,7 @@ const SearchExercises = ({
         ...new Set(exercisesData.map((exercise) => exercise.bodyPart)),
       ];
       setExercises(exercisesData);
+      setExerciseList(exercisesData);
       setBodyParts(["all", ...bodyPartList]);
       setError("");
     } catch (e) {
@@ -54,19 +39,20 @@ const SearchExercises = ({
   useEffect(() => {
     fetchExercisesData();
   }, []);
-  /* ----------- END OF NEW IMPLEMENTATIONS ---------------*/
+
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (search) {
-      const searchExercises = exercisesData.filter(
+    const searchTerm = search.toLowerCase();
+    if (searchTerm) {
+      const searchExercises = exercises.filter(
         (exercise) =>
-          exercise.name.toLowerCase().includes(search) ||
-          exercise.target.toLowerCase().includes(search) ||
-          exercise.equipment.toLowerCase().includes(search) ||
-          exercise.bodyPart.toLowerCase().includes(search)
+          exercise.name.toLowerCase().includes(searchTerm) ||
+          exercise.target.toLowerCase().includes(searchTerm) ||
+          exercise.equipment.toLowerCase().includes(searchTerm) ||
+          exercise.bodyPart.toLowerCase().includes(searchTerm)
       );
       setSearch("");
-      setBodyPart(search);
+      setBodyPart(searchTerm);
       setExercises(searchExercises);
       document.getElementById("exercises").scrollIntoView();
     }
@@ -74,9 +60,9 @@ const SearchExercises = ({
   const handleFilter = (bodyPart) => {
     let modifiedList = [];
     if (bodyPart === "all") {
-      modifiedList = [...exercisesData];
+      modifiedList = [...exerciseList];
     } else {
-      modifiedList = exercisesData.filter(
+      modifiedList = exerciseList.filter(
         (exercise) => exercise.bodyPart === bodyPart
       );
     }
@@ -144,8 +130,8 @@ const SearchExercises = ({
           ) : (
             <HorizontalScrollBar
               bodyParts={bodyParts}
+              onFilter={handleFilter}
               bodyPart={bodyPart}
-              setBodyPart={setBodyPart}
               isBodyParts
             />
           )}

@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
-import Icon from "../assets/icons/gym.png";
-const BodyPart = ({ item, setBodyPart, bodyPart }) => (
+import Icon from "../assets/icons/logo.png";
+
+const BodyPart = ({ item, bodyPart, onFilter }) => (
   <Stack
     type="button"
     alignItems="center"
@@ -9,15 +10,14 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
     sx={{
       borderTop: bodyPart === item && "4px solid #ff2525",
       backgroundColor: "#fff",
-      width: "270px",
-      height: "280px",
+      width: "16.875rem",
+      height: "17.5rem",
       gap: "47px",
       cursor: "pointer",
       borderBottomLeftRadius: "20px",
     }}
     onClick={() => {
-      setBodyPart(item);
-      // window.scrollTo({ top: 1800, left: 100, behaviour: "smooth" });
+      onFilter(item);
       document
         .getElementById("exercises")
         .scrollIntoView({ behavior: "smooth" });

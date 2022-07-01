@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Stack, Typography } from "@mui/material";
 import { borderRadius } from "@mui/system";
@@ -14,7 +13,7 @@ const ExerciseCard = ({ exercise }) => {
             background: "#ffa9a9",
             borderRadius: "20px",
             textTransform: "capitalize",
-            fontSize: "14px",
+            fontSize: "0.8rem",
           }}
         >
           {exercise.bodyPart}
