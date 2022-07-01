@@ -6,7 +6,6 @@ import { exerciseOptions, fetchData } from "../utils/fetchData";
 import Loader from "./Loader";
 
 const SearchExercises = ({
-  bodyPart,
   setBodyPart,
   exercises,
   setExercises,
@@ -131,7 +130,6 @@ const SearchExercises = ({
             <HorizontalScrollBar
               bodyParts={bodyParts}
               onFilter={handleFilter}
-              bodyPart={bodyPart}
               isBodyParts
             />
           )}

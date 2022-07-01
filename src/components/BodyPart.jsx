@@ -1,20 +1,18 @@
 import { Stack, Typography } from "@mui/material";
-import Icon from "../assets/icons/logo.png";
 
-const BodyPart = ({ item, bodyPart, onFilter }) => (
+const BodyPart = ({ item, bodyPart, onFilter, img }) => (
   <Stack
     type="button"
     alignItems="center"
     justifyContent="center"
     className="bodyPart-card"
     sx={{
-      borderTop: bodyPart === item && "4px solid #ff2525",
       backgroundColor: "#fff",
       width: "16.875rem",
       height: "17.5rem",
-      gap: "47px",
+      gap: "3rem",
       cursor: "pointer",
-      borderBottomLeftRadius: "20px",
+      borderBottomLeftRadius: "1.4rem",
     }}
     onClick={() => {
       onFilter(item);
@@ -23,12 +21,12 @@ const BodyPart = ({ item, bodyPart, onFilter }) => (
         .scrollIntoView({ behavior: "smooth" });
     }}
   >
-    <img src={Icon} alt="dumbbell" style={{ width: "40px", height: "40px" }} />
+    <img src={img} alt={img} style={{ width: "2.5rem", height: "2.5rem" }} />
     <Typography
-      fontSize="24px"
+      fontSize="1.5rem"
       fontWeight="bold"
       color="#3a1212"
-      height="40px"
+      height="2.5rem"
       textTransform="capitalize"
     >
       {item}

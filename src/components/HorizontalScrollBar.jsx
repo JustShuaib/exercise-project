@@ -7,6 +7,30 @@ import BodyPart from "./BodyPart";
 import RightArrowIcon from "../assets/icons/right-arrow.png";
 import LeftArrowIcon from "../assets/icons/left-arrow.png";
 
+import All from "../assets/icons/all.png";
+import Waist from "../assets/icons/waist.png";
+import Shoulder from "../assets/icons/shoulder.png";
+import Leg from "../assets/icons/leg.png";
+import Foot from "../assets/icons/foot.png";
+import Back from "../assets/icons/back.png";
+import Chest from "../assets/icons/chest.png";
+import Arm from "../assets/icons/arm.png";
+import Cardio from "../assets/icons/cardio.png";
+import Neck from "../assets/icons/neck.png";
+const Icons = [
+  All,
+  Waist,
+  Leg,
+  Back,
+  Foot,
+  Chest,
+  Arm,
+  Cardio,
+  Shoulder,
+  Arm,
+  Neck,
+];
+
 const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext);
   return (
@@ -26,10 +50,10 @@ const RightArrow = () => {
   );
 };
 
-const HorizontalScrollbar = ({ bodyParts, bodyPart, isBodyParts, onFilter }) =>
+const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) =>
   bodyParts?.length > 0 && (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {bodyParts.map((item) => (
+      {bodyParts.map((item, index) => (
         <Box
           key={item.id || item}
           itemId={item.id || item}
@@ -37,7 +61,11 @@ const HorizontalScrollbar = ({ bodyParts, bodyPart, isBodyParts, onFilter }) =>
           m="0 40px"
         >
           {isBodyParts ? (
-            <BodyPart item={item} onFilter={onFilter} bodyPart={bodyPart} />
+            <BodyPart
+              item={item}
+              onFilter={onFilter}
+              img={Icons[index] || All}
+            />
           ) : (
             <ExerciseCard exercise={item} />
           )}
