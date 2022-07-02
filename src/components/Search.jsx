@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, TextField } from "@mui/system";
+import { Box, Button, TextField } from "@mui/material";
 
 const Search = ({ search, setSearch, handleSearch }) => (
   <Box

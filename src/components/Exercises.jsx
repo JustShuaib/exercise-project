@@ -18,7 +18,7 @@ const Exercises = ({ exercises, error }) => {
   };
 
   return exercises.length === 0 && !error ? (
-    <Box textAlign="center">
+    <Box id="exercises" textAlign="center">
       <Typography
         fontSize={{ xs: "1.4rem", lg: "1.8rem" }}
         fontFamily="Josefin Sans"
