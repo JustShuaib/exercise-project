@@ -27,7 +27,11 @@ const Exercises = ({ exercises, bodyPart, error }) => {
       </Typography>
     </Box>
   ) : (
-    <Box id="exercises" p="2px" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
+    <Box
+      id="exercises"
+      p="1.4rem"
+      sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}
+    >
       {" "}
       {exercises.length > 0 && (
         <Typography mb="2.875rem" fontSize="2rem" fontWeight={700}>

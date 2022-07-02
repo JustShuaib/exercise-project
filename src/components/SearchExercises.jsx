@@ -2,42 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Stack, Typography, Box, Button, TextField } from "@mui/material";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 
-import { exerciseOptions, fetchData } from "../utils/fetchData";
 import Loader from "./Loader";
+// import useFetchData from "../utils/useFetchData";
 
 const SearchExercises = ({
   setBodyPart,
   exercises,
   setExercises,
   error,
-  setError,
+  bodyParts,
+  exerciseList,
 }) => {
   const [search, setSearch] = useState("");
-  const [bodyParts, setBodyParts] = useState([]);
-  const [exerciseList, setExerciseList] = useState([]);
-
-  const fetchExercisesData = async () => {
-    try {
-      const exercisesData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises",
-        exerciseOptions
-      );
-      const bodyPartList = [
-        ...new Set(exercisesData.map((exercise) => exercise.bodyPart)),
-      ];
-      setExercises(exercisesData);
-      setExerciseList(exercisesData);
-      setBodyParts(["all", ...bodyPartList]);
-      setError("");
-    } catch (e) {
-      setError(`${e.message} exercises`);
-      setBodyParts([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchExercisesData();
-  }, []);
+  const [quote, setQuote] = useState("");
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -80,7 +57,7 @@ const SearchExercises = ({
             fontSize: { lg: "2.5rem", xs: "1.8rem" },
           }}
         >
-          Awesome Exercises you <br /> Should Know
+          Awesome exercises you Should know
         </Typography>
         <Box
           component="form"
