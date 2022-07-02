@@ -5,13 +5,13 @@ body {
 }
 
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 0;
 }
 
 .right-arrow,
@@ -34,7 +34,7 @@ body {
 }
 
 .right-arrow {
-  right: 140px;
+  right: 8.75rem;
 }
 
 .right-arrow:hover,
@@ -49,8 +49,8 @@ body {
 }
 
 .detail-image {
-  width: 729px;
-  height: 742px;
+  width: 45.56rem;
+  height: 46.375rem;
 }
 
 .hero-banner-img {
@@ -61,34 +61,30 @@ body {
 }
 
 .exercise-card {
-  width: 400px;
-  height: 445px;
   background: #fff;
+  width: min(85%, 24.4rem);
   border-top: 4px solid #ff2625;
   border-bottom-left-radius: 20px;
   text-decoration: none;
   display: flex;
+  padding-bottom: 10px;
   justify-content: space-between;
   flex-direction: column;
-  padding-bottom: 10px;
-  transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
 }
 
-.exercise-card img {
-  height: 326px;
-}
-
-.bodyPart-card {
+.body-part-card {
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
 }
 
 .exercise-card:hover,
-.bodyPart-card:hover {
+.body-part-card:hover {
   transform: scale(1.1, 1.1);
 }
-
+.exercise-card button:hover {
+  color: black;
+}
 .search-btn:hover {
   color: #ff2625;
   border: 1px solid #ff2625;
@@ -122,18 +118,8 @@ body {
     display: none;
   }
 
-  .exercise-card {
-    width: 320px;
-  }
-
   .exercise-video {
     width: 320px;
     height: 300px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .exercise-card {
-    width: 280px;
   }
 }

@@ -1,16 +1,17 @@
 import { Stack, Typography } from "@mui/material";
 
-const BodyPart = ({ item, bodyPart, onFilter, img }) => (
+const BodyPart = ({ item, onFilter, img }) => (
   <Stack
     type="button"
     alignItems="center"
     justifyContent="center"
-    className="bodyPart-card"
+    className="body-part-card"
     sx={{
       backgroundColor: "#fff",
       width: "16.875rem",
       height: "17.5rem",
       gap: "3rem",
+      mx: { lg: "1rem" },
       cursor: "pointer",
       borderBottomLeftRadius: "1.4rem",
     }}
@@ -25,7 +26,7 @@ const BodyPart = ({ item, bodyPart, onFilter, img }) => (
     <Typography
       fontSize="1.5rem"
       fontWeight="bold"
-      color="#3a1212"
+      color="#ff2625"
       height="2.5rem"
       textTransform="capitalize"
     >

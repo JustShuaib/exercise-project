@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import ExerciseCard from "./ExerciseCard";
 
-const Exercises = ({ exercises, bodyPart, error }) => {
+const Exercises = ({ exercises, error }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -27,23 +27,24 @@ const Exercises = ({ exercises, bodyPart, error }) => {
       </Typography>
     </Box>
   ) : (
-    <Box
-      id="exercises"
-      p="1.4rem"
-      sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}
-    >
-      {" "}
+    <Box id="exercises" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
       {exercises.length > 0 && (
-        <Typography mb="2.875rem" fontSize="2rem" fontWeight={700}>
-          {" "}
-          {bodyPart === "all" ? "Showing Exercises" : "Showing Result"}
+        <Typography
+          mb="2.875rem"
+          pl={{ xs: "1.4rem", lg: "3rem" }}
+          fontSize="2rem"
+          fontWeight={700}
+        >
+          Showing Exercises
         </Typography>
       )}
       <Stack
         direction="row"
         flexWrap="wrap"
         justifyContent="center"
-        sx={{ gap: { lg: "2.5rem", xs: "3.125rem" } }}
+        sx={{
+          gap: "3rem",
+        }}
       >
         {currentExercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />
@@ -58,7 +59,6 @@ const Exercises = ({ exercises, bodyPart, error }) => {
             count={Math.ceil(exercises.length / exercisesPerPage)}
             page={currentPage}
             onChange={paginate}
-            size="large"
           />
         )}
       </Stack>

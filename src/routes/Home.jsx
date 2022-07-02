@@ -71,11 +71,7 @@ const Home = () => {
               bodyParts={bodyParts}
               exerciseList={exerciseList}
             />
-            <Exercises
-              bodyPart={bodyPart}
-              exercises={exercises}
-              error={error}
-            />
+            <Exercises exercises={exercises} error={error} />
           </>
         )}
       </main>

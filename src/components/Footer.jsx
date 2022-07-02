@@ -15,8 +15,8 @@ const Footer = () => (
     <Link to="/">
       <img src={Logo} alt="logo" width="80rem" />
     </Link>
-    <Typography variant="h5" textAlign="center">
-      Made with ❤️by{" "}
+    <Typography variant="h5" textAlign="center" fontFamily="Josefin Sans">
+      Made with ❤️ by{" "}
       <a
         href="www.github.com/JustShuaib"
         target="_blank"
