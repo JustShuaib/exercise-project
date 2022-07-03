@@ -1,21 +1,12 @@
 import React, { useState } from "react";
+
 import { Stack, Typography, Box } from "@mui/material";
+
 import HorizontalScrollBar from "./HorizontalScrollBar";
-
-import Loader from "./Loader";
 import Search from "./Search";
-// import useFetchData from "../utils/useFetchData";
 
-const SearchExercises = ({
-  setBodyPart,
-  exercises,
-  setExercises,
-  error,
-  bodyParts,
-  exerciseList,
-}) => {
+const SearchExercises = ({ exercises, bodyParts, exerciseList, dispatch }) => {
   const [search, setSearch] = useState("");
-  const [quote, setQuote] = useState("");
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -29,11 +20,11 @@ const SearchExercises = ({
           exercise.bodyPart.toLowerCase().includes(searchTerm)
       );
       setSearch("");
-      setBodyPart(searchTerm);
-      setExercises(searchExercises);
+      dispatch({ type: "SEARCH", payload: searchExercises });
       document.getElementById("exercises").scrollIntoView();
     }
   };
+
   const handleFilter = (bodyPart) => {
     let modifiedList = [];
     if (bodyPart === "all") {
@@ -43,8 +34,9 @@ const SearchExercises = ({
         (exercise) => exercise.bodyPart === bodyPart
       );
     }
-    setExercises(modifiedList);
+    dispatch({ type: "FILTER", payload: modifiedList });
   };
+
   return (
     <Box>
       <Stack alignItems="center" justifyContent="center" p="1.4rem">
@@ -66,15 +58,11 @@ const SearchExercises = ({
           handleSearch={handleSearch}
         />
         <Box sx={{ position: "relative", width: "100%", p: "1.2rem" }}>
-          {bodyParts.length === 0 && !error ? (
-            <Loader color="#ff2625" />
-          ) : (
-            <HorizontalScrollBar
-              bodyParts={bodyParts}
-              onFilter={handleFilter}
-              isBodyParts
-            />
-          )}
+          <HorizontalScrollBar
+            bodyParts={bodyParts}
+            onFilter={handleFilter}
+            isBodyParts
+          />
         </Box>
       </Stack>
     </Box>

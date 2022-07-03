@@ -1,20 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 
 import HeroBanner from "../components/HeroBanner";
 import Exercises from "../components/Exercises";
 import SearchExercises from "../components/SearchExercises";
 
-import { exerciseOptions, quoteOptions, fetchData } from "../utils/fetchData";
-
+import { exerciseOptions, fetchData } from "../utils/fetchData";
+import Loader from "../components/Loader";
+import FallBackUI from "../components/FallBackUI";
+const initialState = {
+  exercises: [],
+  bodyParts: [],
+  exerciseList: [],
+  error: false,
+  loading: false,
+};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "COMPLETED":
+      const { error, loading, exercises, bodyParts } = action.payload;
+      return {
+        ...state,
+        error,
+        loading,
+        exercises,
+        bodyParts: ["all", ...bodyParts],
+        exerciseList: exercises,
+      };
+    case "LOADING":
+      return { ...state, loading: true };
+    case "ERROR":
+      return { ...state, loading: false, error: action.payload.error };
+    case "SEARCH":
+      return { ...state, exercises: action.payload };
+    case "FILTER":
+      return { ...state, exercises: action.payload };
+    default:
+      return { ...state };
+  }
+};
 const Home = () => {
-  const [bodyPart, setBodyPart] = useState("all");
-  const [exercises, setExercises] = useState([]);
-  const [error, setError] = useState(false);
-  const [bodyParts, setBodyParts] = useState([]);
-  const [exerciseList, setExerciseList] = useState([]);
-
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { loading, error, exercises, bodyParts, exerciseList } = state;
   const fetchExercisesData = async () => {
+    dispatch({ type: "LOADING" });
     try {
       const exercisesData = await fetchData(
         `https://${import.meta.env.VITE_RAPID_API_HOST}/exercises`,
@@ -23,13 +52,17 @@ const Home = () => {
       const bodyPartList = [
         ...new Set(exercisesData.map((exercise) => exercise.bodyPart)),
       ];
-      setExercises(exercisesData);
-      setExerciseList(exercisesData);
-      setBodyParts(["all", ...bodyPartList]);
-      setError(false);
-    } catch (e) {
-      setError(true);
-      setBodyParts([]);
+      dispatch({
+        type: "COMPLETED",
+        payload: {
+          error: false,
+          loading: false,
+          exercises: exercisesData,
+          bodyParts: bodyPartList,
+        },
+      });
+    } catch {
+      dispatch({ type: "ERROR", payload: { error: true } });
     }
   };
 
@@ -37,41 +70,25 @@ const Home = () => {
     fetchExercisesData();
   }, []);
 
+  if (error) {
+    return <FallBackUI retry={fetchExercisesData} />;
+  }
+
   return (
     <Box>
       <HeroBanner />
       <main>
-        {error ? (
-          <Box textAlign="center" mt={{ xs: "5rem", lg: "10rem" }}>
-            <Typography
-              fontSize={{ xs: "1.6rem", lg: "2.5rem" }}
-              color="#ff2625"
-              fontFamily="Josefin Sans"
-              gutterBottom
-            >
-              Something went wrong :(
-            </Typography>
-            <Button
-              onClick={fetchExercisesData}
-              size="large"
-              variant="contained"
-              sx={{ mt: "1rem", bgcolor: "#ff2625" }}
-            >
-              Retry
-            </Button>
-          </Box>
+        {loading ? (
+          <Loader color="#ff2625" home />
         ) : (
           <>
             <SearchExercises
-              setExercises={setExercises}
+              dispatch={dispatch}
               exercises={exercises}
-              setBodyPart={setBodyPart}
-              error={error}
-              setError={setError}
               bodyParts={bodyParts}
               exerciseList={exerciseList}
             />
-            <Exercises exercises={exercises} error={error} />
+            <Exercises exercises={exercises} />
           </>
         )}
       </main>

@@ -42,7 +42,6 @@ const LeftArrow = () => {
 
 const RightArrow = () => {
   const { scrollNext } = useContext(VisibilityContext);
-
   return (
     <Typography onClick={() => scrollNext()} className="left-arrow">
       <img src={RightArrowIcon} alt="right-arrow" />
@@ -50,28 +49,31 @@ const RightArrow = () => {
   );
 };
 
-const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) =>
-  bodyParts?.length > 0 && (
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {bodyParts.map((item, index) => (
-        <Box
-          key={item.id || item}
-          itemId={item.id || item}
-          title={item.id || item}
-          m="0 0.5rem"
-        >
-          {isBodyParts ? (
-            <BodyPart
-              item={item}
-              onFilter={onFilter}
-              img={Icons[index] || All}
-            />
-          ) : (
-            <ExerciseCard exercise={item} />
-          )}
-        </Box>
-      ))}
-    </ScrollMenu>
-  );
+const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => {
+  if (bodyParts.length > 0) {
+    return (
+      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+        {bodyParts.map((item, index) => (
+          <Box
+            key={item.id || item}
+            itemId={item.id || item}
+            title={item.id || item}
+            m="0 0.5rem"
+          >
+            {isBodyParts ? (
+              <BodyPart
+                item={item}
+                onFilter={onFilter}
+                img={Icons[index] || All}
+              />
+            ) : (
+              <ExerciseCard exercise={item} />
+            )}
+          </Box>
+        ))}
+      </ScrollMenu>
+    );
+  }
+};
 
 export default HorizontalScrollbar;

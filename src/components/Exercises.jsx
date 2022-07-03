@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import ExerciseCard from "./ExerciseCard";
 
-const Exercises = ({ exercises, error }) => {
+const Exercises = ({ exercises }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -16,28 +16,29 @@ const Exercises = ({ exercises, error }) => {
     setCurrentPage(value);
     document.getElementById("exercises").scrollIntoView({ behavior: "smooth" });
   };
-
-  return exercises.length === 0 && !error ? (
-    <Box id="exercises" textAlign="center">
-      <Typography
-        fontSize={{ xs: "1.4rem", lg: "1.8rem" }}
-        fontFamily="Josefin Sans"
-      >
-        No such exercise exist :(
-      </Typography>
-    </Box>
-  ) : (
-    <Box id="exercises" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
-      {exercises.length > 0 && (
+  if (exercises.length === 0)
+    return (
+      <Box id="exercises" textAlign="center">
         <Typography
-          mb="2.875rem"
-          pl={{ xs: "1.4rem", lg: "3rem" }}
-          fontSize="2rem"
-          fontWeight={700}
+          fontSize={{ xs: "1.4rem", lg: "1.8rem" }}
+          fontFamily="Josefin Sans"
         >
-          Showing Exercises
+          No such exercise exist :(
         </Typography>
-      )}
+      </Box>
+    );
+  return (
+    <Box id="exercises" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
+      <Typography
+        mb="2.875rem"
+        pl={{ xs: "1.4rem", lg: "3rem" }}
+        fontSize="2rem"
+        fontWeight={700}
+      >
+        Showing Exercises
+      </Typography>
+
+      {/* Exercises list */}
       <Stack
         direction="row"
         flexWrap="wrap"
@@ -50,6 +51,8 @@ const Exercises = ({ exercises, error }) => {
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </Stack>
+
+      {/* Pagination */}
       <Stack mt="6.25rem" alignItems="center">
         {exercises.length > exercisesPerPage && (
           <Pagination
