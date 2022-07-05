@@ -10,7 +10,7 @@ const Loader = ({ color, home }) => {
       width="100%"
       mt={home && { xs: "4rem", lg: "8rem" }}
     >
-      <TailSpin color={color || "grey"} height={80} width={80} />
+      <TailSpin color="#ff2625" height={80} width={80} />
     </Stack>
   );
 };

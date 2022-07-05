@@ -2,18 +2,22 @@ import { Stack, Button, Typography } from "@mui/material";
 import BodyPartImage from "../assets/icons/body-part.png";
 import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/equipment.png";
+
 const Detail = ({ exerciseDetail }) => {
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
   const extraDetail = [
     {
+      id: "1",
       icon: BodyPartImage,
       name: bodyPart,
     },
     {
+      id: "2",
       icon: TargetImage,
       name: target,
     },
     {
+      id: "3",
       icon: EquipmentImage,
       name: equipment,
     },
@@ -41,7 +45,7 @@ const Detail = ({ exerciseDetail }) => {
         </Typography>
         {extraDetail.map((detail) => (
           <Stack
-            key={detail.name}
+            key={detail.id}
             direction="row"
             gap="1.5rem"
             px="1rem"

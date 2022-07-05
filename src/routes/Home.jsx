@@ -79,7 +79,7 @@ const Home = () => {
       <HeroBanner />
       <main>
         {loading ? (
-          <Loader color="#ff2625" home />
+          <Loader home />
         ) : (
           <>
             <SearchExercises
