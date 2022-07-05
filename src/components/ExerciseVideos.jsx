@@ -20,63 +20,33 @@ const ExerciseVideos = ({ exerciseVideos, exerciseName }) => {
         exercise videos
       </Typography>
       {/* Exercise videos */}
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
-        {exerciseVideos.slice(0, 6).map((item, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
-            {/* <Item> */} Test
-            {/* <a
-              target="_blank"
-              rel="noopener"
-              href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
-            >
-              <img src={item.video.thumbnails[0].url} alt={item.video.title} />
-            </a>
-            <Box>
-              <Typography variant="h5" color="black">
-                {item.video.title}
-              </Typography>
-              <Typography variant="subtitle1" color="black">
-                {item.video.channelName}
-              </Typography>
-            </Box> */}
-            {/* </Item> */}
-          </Grid>
-        ))}
-      </Grid>
-      {/* <Stack
-        flexWrap="wrap"
-        justifyContent="space-around"
-        alignItems="center"
-        sx={{ flexDirection: { lg: "row" }, gap: { lg: "10px", xs: "10px" } }}
-      >
-        {exerciseVideos.slice(0, 6).map((item, index) => (
-          <Box
-            key={index}
-            className="exercise-video"
-            width={{ xs: "85%", lg: "30%" }}
-          >
+      <Grid container spacing={{ xs: 4, lg: 8 }} px="2rem">
+        {exerciseVideos.map((item, index) => (
+          <Grid item xs={12} lg={4} key={index}>
             <a
               target="_blank"
               rel="noopener"
               href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
             >
-              <img src={item.video.thumbnails[0].url} alt={item.video.title} />
+              <img
+                src={item.video.thumbnails[0].url}
+                alt={item.video.title}
+                width="100%"
+              />
             </a>
             <Box>
-              <Typography variant="h5" color="black">
+              <Typography
+                variant="h3"
+                fontSize="1.5rem"
+                fontFamily="Josefin Sans"
+              >
                 {item.video.title}
               </Typography>
-              <Typography variant="subtitle1" color="black">
-                {item.video.channelName}
-              </Typography>
+              <Typography>{item.video.channelName}</Typography>
             </Box>
-          </Box>
+          </Grid>
         ))}
-      </Stack> */}
+      </Grid>
     </Box>
   );
 };

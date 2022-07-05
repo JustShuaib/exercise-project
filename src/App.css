@@ -90,21 +90,6 @@ body {
   border: 1px solid #ff2625;
 }
 
-.exercise-video {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: flex-start; */
-  /* gap: 24px; */
-  /* width: min(85%, 25rem); */
-}
-.exercise-video img {
-  width: 100%;
-  height: 12rem;
-}
-.exercise-video a {
-  text-decoration: none;
-}
 @media screen and (max-width: 1200px) {
   .detail-image {
     width: 300px;
