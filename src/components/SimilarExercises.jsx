@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
+import HeadingTwo from "../utils/HeadingTwo";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import Loader from "./Loader";
 const SimilarExercises = ({ targetMuscleExercises, equipmentExercises }) => (
@@ -7,19 +8,19 @@ const SimilarExercises = ({ targetMuscleExercises, equipmentExercises }) => (
       mt: { lg: "100px", xs: "10px" },
     }}
   >
-    <Typography variant="h3" fontSize="2rem" textAlign="center" mb="5">
-      Exercises that target the same muscle group
-    </Typography>
-    <Stack direction="row" sx={{ p: "2", position: "relative" }}>
+    <HeadingTwo>Exercises that target the same muscle group</HeadingTwo>
+    <Stack
+      direction="row"
+      mb={{ xs: 4, lg: 6 }}
+      sx={{ p: "2", position: "relative" }}
+    >
       {targetMuscleExercises.length ? (
         <HorizontalScrollBar bodyParts={targetMuscleExercises} />
       ) : (
         <Loader />
       )}
     </Stack>
-    <Typography variant="h3" fontSize="2rem" textAlign="center" mb="5">
-      Exercises that use the same Equipments
-    </Typography>
+    <HeadingTwo>Exercises that use the same equipments</HeadingTwo>
     <Stack direction="row" sx={{ p: "2", position: "relative" }}>
       {equipmentExercises.length ? (
         <HorizontalScrollBar bodyParts={equipmentExercises} />

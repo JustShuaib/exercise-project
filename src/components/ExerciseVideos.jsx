@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, Grid } from "@mui/material";
+import { Box, Stack, Typography, Grid, Card } from "@mui/material";
 
 import Loader from "./Loader";
 
@@ -23,27 +23,32 @@ const ExerciseVideos = ({ exerciseVideos, exerciseName }) => {
       <Grid container spacing={{ xs: 4, lg: 8 }} px="2rem">
         {exerciseVideos.map((item, index) => (
           <Grid item xs={12} lg={4} key={index}>
-            <a
-              target="_blank"
-              rel="noopener"
-              href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
-            >
-              <img
-                src={item.video.thumbnails[0].url}
-                alt={item.video.title}
-                width="100%"
-              />
-            </a>
-            <Box>
-              <Typography
-                variant="h3"
-                fontSize="1.5rem"
-                fontFamily="Josefin Sans"
+            <Card sx={{ minHeight: "20rem" }}>
+              <a
+                target="_blank"
+                rel="noopener"
+                href={`https://www.youtube.com/watch?v=${item.video?.videoId}`}
               >
-                {item.video.title}
-              </Typography>
-              <Typography>{item.video.channelName}</Typography>
-            </Box>
+                <img
+                  src={item.video?.thumbnails[0].url}
+                  alt={item.video?.title}
+                  width="100%"
+                />
+              </a>
+              <Box>
+                <Typography
+                  variant="h3"
+                  fontSize="1.5rem"
+                  fontFamily="Josefin Sans"
+                  px={1.5}
+                >
+                  {item.video?.title}
+                </Typography>
+                <Typography fontFamily="Josefin Sans" px={1.5}>
+                  {item.video?.channelName}
+                </Typography>
+              </Box>
+            </Card>
           </Grid>
         ))}
       </Grid>

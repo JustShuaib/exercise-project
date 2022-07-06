@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { TailSpin } from "react-loader-spinner";
 
-const Loader = ({ color, home }) => {
+const Loader = ({ home }) => {
   return (
     <Stack
       direction="row"
@@ -10,7 +10,7 @@ const Loader = ({ color, home }) => {
       width="100%"
       mt={home && { xs: "4rem", lg: "8rem" }}
     >
-      <TailSpin color="#ff2625" height={80} width={80} />
+      <TailSpin color="#ff2625" height={60} width={60} />
     </Stack>
   );
 };

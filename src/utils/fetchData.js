@@ -17,7 +17,7 @@ export const exerciseOptions = {
 export const youTubeOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+    "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_YOUTUBE_KEY,
     "X-RapidAPI-Host": import.meta.env.VITE_RAPID_API_YOUTUBE_HOST,
   },
 };

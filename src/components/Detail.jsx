@@ -38,7 +38,7 @@ const Detail = ({ exerciseDetail }) => {
         >
           {name}
         </Typography>
-        <Typography px="1rem">
+        <Typography px={2} fontFamily="Josefin Sans">
           Exercises keep you strong. {name || "working out"} is one of the best
           exercises to target your {target || "muscle"}. It will help you
           improve your mood and gain energy.
@@ -48,7 +48,7 @@ const Detail = ({ exerciseDetail }) => {
             key={detail.id}
             direction="row"
             gap="1.5rem"
-            px="1rem"
+            px={2}
             alignItems="center"
           >
             <Button

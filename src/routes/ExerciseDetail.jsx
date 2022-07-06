@@ -14,9 +14,10 @@ const ExerciseDetail = () => {
   const [equipmentExercises, setEquipmentExercises] = useState([]);
   const { id } = useParams();
 
+  const EXERCISE_URL = import.meta.env.VITE_RAPID_API_HOST;
+  const YOUTUBE_URL = import.meta.env.VITE_RAPID_API_YOUTUBE_HOST;
+
   const fetchExercisesData = async () => {
-    const EXERCISE_URL = import.meta.env.VITE_RAPID_API_HOST;
-    const YOUTUBE_URL = import.meta.env.VITE_RAPID_API_YOUTUBE_HOST;
     try {
       const exerciseDetailData = await fetchData(
         `https://${EXERCISE_URL}/exercises/exercise/${id}`,
@@ -26,15 +27,25 @@ const ExerciseDetail = () => {
     } catch {
       setExerciseDetail([]);
     }
+  };
+
+  useEffect(() => {
+    fetchExercisesData();
+  }, []);
+
+  const fetchExercisesVideos = async () => {
     try {
       const exerciseVideosData = await fetchData(
-        `https://${YOUTUBE_URL}/search?query=${exerciseDetail.name}`,
+        `https://${YOUTUBE_URL}/search?query=${
+          exerciseDetail.name || "exercise"
+        }`,
         youTubeOptions
       );
       setExerciseVideos(exerciseVideosData.contents.splice(0, 6));
     } catch {
       setExerciseVideos([]);
     }
+
     try {
       const exerciseData = await fetchData(
         `https://${YOUTUBE_URL}/exercises`,
@@ -54,9 +65,11 @@ const ExerciseDetail = () => {
       setTargetMuscleExercises([]);
     }
   };
+
   useEffect(() => {
-    fetchExercisesData();
-  }, []);
+    fetchExercisesVideos();
+  }, [exerciseDetail]);
+
   /*   useEffect(() => {
     fetchExercisesData();
   }, [id]);
