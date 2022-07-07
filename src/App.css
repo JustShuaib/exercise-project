@@ -59,37 +59,6 @@ body {
   top: -12rem;
   margin-top: 0;
 }
-
-.exercise-card {
-  background: #fff;
-  width: min(85%, 24.4rem);
-  border-top: 4px solid #ff2625;
-  border-bottom-left-radius: 20px;
-  text-decoration: none;
-  display: flex;
-  padding-bottom: 10px;
-  justify-content: space-between;
-  flex-direction: column;
-  transition: 0.3s all ease-in-out;
-}
-
-.body-part-card {
-  transform: scale(1, 1);
-  transition: 0.3s all ease-in-out;
-}
-
-.exercise-card:hover,
-.body-part-card:hover {
-  transform: scale(1.1, 1.1);
-}
-.exercise-card button:hover {
-  color: black;
-}
-.search-btn:hover {
-  color: #ff2625;
-  border: 1px solid #ff2625;
-}
-
 @media screen and (max-width: 1200px) {
   .detail-image {
     width: 300px;
