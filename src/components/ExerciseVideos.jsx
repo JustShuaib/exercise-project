@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, Grid, Card } from "@mui/material";
+import { Box, Typography, Grid, Card } from "@mui/material";
 
 import Loader from "./Loader";
 
@@ -20,7 +20,12 @@ const ExerciseVideos = ({ exerciseVideos, exerciseName }) => {
         exercise videos
       </Typography>
       {/* Exercise videos */}
-      <Grid container spacing={{ xs: 4, lg: 8 }} px="2rem">
+      <Grid
+        container
+        spacing={{ xs: 4, lg: 8 }}
+        px="2rem"
+        mb={{ xs: 4, lg: 6 }}
+      >
         {exerciseVideos.map((item, index) => (
           <Grid item xs={12} lg={4} key={index}>
             <Card sx={{ minHeight: "20rem" }}>

@@ -5,7 +5,6 @@ const BodyPart = ({ item, onFilter, img }) => (
     type="button"
     alignItems="center"
     justifyContent="center"
-    className="body-part-card"
     sx={stackStyles}
     onClick={() => {
       onFilter(item);

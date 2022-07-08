@@ -1,4 +1,4 @@
-import { Stack, Button, Typography } from "@mui/material";
+import { Stack, Button, Typography, Box } from "@mui/material";
 import BodyPartImage from "../assets/icons/body-part.png";
 import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/equipment.png";
@@ -27,7 +27,14 @@ const Detail = ({ exerciseDetail }) => {
       gap="3.75rem"
       sx={{ flexDirection: { lg: "row" }, p: "1.25rem", alignItems: "center" }}
     >
-      <img src={gifUrl} alt={name} loading="lazy" className="detail-image" />
+      <Box
+        sx={{
+          width: { xs: "18.75rem", lg: "45.56rem" },
+          height: { xs: "18.75rem", lg: "46.375rem" },
+        }}
+      >
+        <img src={gifUrl} alt={name} loading="lazy" width="100%" />
+      </Box>
       <Stack sx={{ gap: { lg: "2.2rem", xs: "1.25rem" } }}>
         <Typography
           variant="h1"

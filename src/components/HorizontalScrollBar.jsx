@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import { Box, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 
 import ExerciseCard from "./ExerciseCard";
 import BodyPart from "./BodyPart";
@@ -34,18 +34,18 @@ const Icons = [
 const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext);
   return (
-    <Typography onClick={() => scrollPrev()} className="right-arrow">
-      <img src={LeftArrowIcon} alt="right-arrow" />
-    </Typography>
+    <Box onClick={() => scrollPrev()} sx={arrowStyles()}>
+      <img src={LeftArrowIcon} alt="left arrow" />
+    </Box>
   );
 };
 
 const RightArrow = () => {
   const { scrollNext } = useContext(VisibilityContext);
   return (
-    <Typography onClick={() => scrollNext()} className="left-arrow">
-      <img src={RightArrowIcon} alt="right-arrow" />
-    </Typography>
+    <Box onClick={() => scrollNext()} sx={arrowStyles("right")}>
+      <img src={RightArrowIcon} alt="right arrow" />
+    </Box>
   );
 };
 
@@ -57,8 +57,10 @@ const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => {
           <Box
             key={item.id || item}
             itemId={item.id || item}
-            title={item.id || item}
-            m="0 0.5rem"
+            title={isBodyParts ? item.id : item.name}
+            bgcolor="yellow"
+            // ml="1rem"
+            mx="1.5rem"
           >
             {isBodyParts ? (
               <BodyPart
@@ -77,3 +79,17 @@ const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => {
 };
 
 export default HorizontalScrollbar;
+
+const arrowStyles = (right) => ({
+  position: { lg: "absolute" },
+  bottom: "-1.4rem",
+  right: right && "8.55rem",
+  color: "#ff2625",
+  cursor: "pointer",
+  background: "transparent",
+  transform: "scale(1.2)",
+  transition: "all 0.3s ease-in-out",
+  "&: hover": {
+    transform: "scale(1.5)",
+  },
+});

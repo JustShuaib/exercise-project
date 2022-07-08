@@ -68,12 +68,8 @@ const ExerciseDetail = () => {
 
   useEffect(() => {
     fetchExercisesVideos();
-  }, [exerciseDetail]);
+  }, []);
 
-  /*   useEffect(() => {
-    fetchExercisesData();
-  }, [id]);
- */
   return (
     <Box component="main">
       <Detail exerciseDetail={exerciseDetail} />

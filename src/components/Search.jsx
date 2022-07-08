@@ -38,6 +38,10 @@ const Search = ({ search, setSearch, handleSearch }) => (
         position: "absolute",
         right: "0",
         font: "inherit",
+        "&:hover": {
+          color: "#ff2625",
+          border: "1px solid #ff2625",
+        },
       }}
     >
       Search

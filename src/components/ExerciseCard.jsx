@@ -1,9 +1,36 @@
 import { Link } from "react-router-dom";
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 const ExerciseCard = ({ exercise }) => (
-  <Link to={`exercise/${exercise.id}`} className="exercise-card">
-    <img src={exercise.gifUrl} loading="lazy" alt={exercise.name} />
+  <Box
+    sx={{
+      backgroundColor: "green",
+      borderTop: "4px solid #ff2625",
+      width: "min(100%, 24.4rem)",
+      // width: { xs: "100%", lg: "24.4rem" },
+      // width: "100%",
+      pb: "10px",
+      borderBottomLeftRadius: "1.4rem",
+      textDecoration: "none",
+      transition: "all 0.3s ease-in-out",
+      "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.5)",
+        transform: "scale(1.1)",
+      },
+      "& button:hover": {
+        color: "#000",
+      },
+    }}
+  >
+    <Link to={`exercise/${exercise.id}`}>
+      <img
+        src={exercise.gifUrl}
+        loading="lazy"
+        alt={exercise.name}
+        width="100%"
+      />
+    </Link>
+
     <Stack direction="row">
       <Button
         sx={{
@@ -41,7 +68,7 @@ const ExerciseCard = ({ exercise }) => (
     >
       {exercise.name}
     </Typography>
-  </Link>
+  </Box>
 );
 
 export default ExerciseCard;

@@ -22,7 +22,7 @@ const Footer = () => (
     >
       Made with ❤️ by{" "}
       <a
-        href="www.github.com/JustShuaib"
+        href="https://www.github.com/JustShuaib"
         target="_blank"
         rel="noopener noreferrer"
       >

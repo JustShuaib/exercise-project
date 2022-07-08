@@ -53,8 +53,18 @@ const HeroBanner = () => (
     >
       Exercises
     </Typography>
-    <img src={HeroBannerImage} alt="banner" className="hero-banner-img" />
+    <Box sx={bannerImg}>
+      <img src={HeroBannerImage} alt="banner" />
+    </Box>
   </Box>
 );
 
 export default HeroBanner;
+
+const bannerImg = {
+  position: "absolute",
+  right: "0",
+  top: "-12rem",
+  MarginTop: "0",
+  display: { xs: "none", lg: "block" },
+};
