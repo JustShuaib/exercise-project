@@ -31,9 +31,11 @@ const Exercises = ({ exercises }) => {
     <Box id="exercises" sx={{ mt: { xs: "3.125rem", lg: "6.875rem" } }}>
       <Typography
         mb="2.875rem"
-        pl={{ xs: "1.4rem", lg: "3rem" }}
+        pl={{ lg: "3rem" }}
+        textAlign={{ xs: "center", lg: "left" }}
         fontSize="2rem"
         fontWeight={700}
+        fontFamily="Josefin Sans"
       >
         Showing Exercises
       </Typography>
