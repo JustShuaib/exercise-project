@@ -39,18 +39,17 @@ const SearchExercises = ({ exercises, bodyParts, exerciseList, dispatch }) => {
 
   return (
     <Box>
-      <Stack alignItems="center" justifyContent="center" p="1.4rem">
+      <Stack alignItems="center" justifyContent="center" p={2.8}>
         <Typography
           component="h2"
           textAlign="center"
-          fontWeight={700}
-          mb="3.125rem"
-          mt={{ xs: "2rem", lg: "10rem" }}
+          mb={3}
+          mt={{ xs: 2, lg: 20 }}
           sx={{
             fontSize: { lg: "2.5rem", xs: "1.8rem" },
           }}
         >
-          Awesome exercises <br /> you Should know
+          Awesome exercises <br /> you should know
         </Typography>
         <Search
           search={search}

@@ -15,11 +15,7 @@ const Footer = () => (
     <Link to="/">
       <img src={Logo} alt="logo" width="80rem" />
     </Link>
-    <Typography
-      fontSize={{ xs: "1.4rem", lg: "1.6rem" }}
-      textAlign="center"
-      fontFamily="Josefin Sans"
-    >
+    <Typography fontSize={{ xs: "1.4rem", lg: "1.6rem" }} textAlign="center">
       Made with ❤️ by{" "}
       <a
         href="https://www.github.com/JustShuaib"

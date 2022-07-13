@@ -10,7 +10,6 @@ const FallBackUI = ({ retry }) => (
         <Typography
           fontSize={{ xs: "1.6rem", lg: "2.5rem" }}
           color="#ff2625"
-          fontFamily="Josefin Sans"
           gutterBottom
         >
           Something went wrong :(

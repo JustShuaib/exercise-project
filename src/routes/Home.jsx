@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 import HeroBanner from "../components/HeroBanner";
 import Exercises from "../components/Exercises";
