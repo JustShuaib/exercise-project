@@ -9,6 +9,16 @@ const myTheme = createTheme({
   typography: {
     fontFamily: "Josefin Sans",
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          fontFamily: "Josefin Sans",
+          backgroundColor: "#fffafb",
+        },
+      },
+    },
+  },
 });
 const App = () => (
   <>

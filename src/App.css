@@ -3,10 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
+/* body {
   font-family: "Josefin Sans";
   background-color: #fffafb;
-}
+} */
 ::-webkit-scrollbar {
   width: 0;
 }
