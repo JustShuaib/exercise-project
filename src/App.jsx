@@ -12,6 +12,9 @@ const myTheme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        "::-webkit-scrollbar": {
+          width: "0",
+        },
         body: {
           fontFamily: "Josefin Sans",
           backgroundColor: "#fffafb",
