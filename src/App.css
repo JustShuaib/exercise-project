@@ -3,6 +3,13 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: "Josefin Sans";
+  background-color: #fffafb;
+}
+::-webkit-scrollbar {
+  width: 0;
+}
 .react-horizontal-scrolling-menu--wrapper {
   width: 100%;
   display: flex;
