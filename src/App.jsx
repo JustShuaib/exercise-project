@@ -4,7 +4,7 @@ import Home from "./routes/Home";
 import ExerciseDetail from "./routes/ExerciseDetail";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 const myTheme = createTheme({
   typography: {
     fontFamily: "Josefin Sans",
@@ -13,6 +13,7 @@ const myTheme = createTheme({
 const App = () => (
   <>
     <ThemeProvider theme={myTheme}>
+      <CssBaseline />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
