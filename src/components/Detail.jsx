@@ -39,13 +39,12 @@ const Detail = ({ exerciseDetail }) => {
         <Typography
           variant="h1"
           textTransform="capitalize"
-          fontFamily="Josefin Sans"
           textAlign="center"
           fontSize="2rem"
         >
           {name}
         </Typography>
-        <Typography px={2} fontFamily="Josefin Sans">
+        <Typography px={2}>
           Exercises keep you strong. {name || "working out"} is one of the best
           exercises to target your {target || "muscle"}. It will help you
           improve your mood and gain energy.
@@ -73,11 +72,7 @@ const Detail = ({ exerciseDetail }) => {
                 style={{ width: "3.125rem", height: "3.125rem" }}
               />
             </Button>
-            <Typography
-              fontFamily="Josefin Sans"
-              fontSize="1.5rem"
-              textTransform="capitalize"
-            >
+            <Typography fontSize="1.5rem" textTransform="capitalize">
               {detail.name}
             </Typography>
           </Stack>

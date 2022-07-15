@@ -17,15 +17,14 @@ const HeroBanner = () => (
       component="h1"
       fontWeight={600}
       fontSize="2rem"
-      fontFamily="inherit"
       letterSpacing="0.1rem"
     >
-      Fitness Club
+      FitFest
     </Typography>
-    <Typography fontWeight={700} fontSize="2.5rem" my="1.7rem">
+    <Typography fontSize="2rem" my={1}>
       Sweat, Smile <br /> and Repeat
     </Typography>
-    <Typography mb={4} fontSize="1.4rem" fontFamily="Josefin Sans">
+    <Typography mb={4} fontSize="1.4rem">
       Check out the most effective exercises
     </Typography>
     <Button

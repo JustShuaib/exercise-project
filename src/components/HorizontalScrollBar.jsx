@@ -30,29 +30,18 @@ const Icons = [
   Arm,
   Neck,
 ];
-
-const LeftArrow = () => {
-  const { scrollPrev } = useContext(VisibilityContext);
-  return (
-    <Box onClick={() => scrollPrev()} sx={arrowStyles()}>
-      <img src={LeftArrowIcon} alt="left arrow" />
-    </Box>
-  );
+const test = {
+  width: "500px",
 };
-
-const RightArrow = () => {
-  const { scrollNext } = useContext(VisibilityContext);
-  return (
-    <Box onClick={() => scrollNext()} sx={arrowStyles("right")}>
-      <img src={RightArrowIcon} alt="right arrow" />
-    </Box>
-  );
-};
-
 const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => {
   if (bodyParts.length > 0) {
     return (
-      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+      <ScrollMenu
+        LeftArrow={LeftArrow}
+        RightArrow={RightArrow}
+        scrollContainerClassName="test"
+        wrapperClassName="wrapper"
+      >
         {bodyParts.map((item, index) => (
           <Box
             key={item.id || item}
@@ -80,10 +69,28 @@ const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => {
 
 export default HorizontalScrollbar;
 
+const LeftArrow = () => {
+  const { scrollPrev } = useContext(VisibilityContext);
+  return (
+    <Box onClick={() => scrollPrev()} sx={arrowStyles()}>
+      <img src={LeftArrowIcon} alt="left arrow" />
+    </Box>
+  );
+};
+
+const RightArrow = () => {
+  const { scrollNext } = useContext(VisibilityContext);
+  return (
+    <Box onClick={() => scrollNext()} sx={arrowStyles("right")}>
+      <img src={RightArrowIcon} alt="right arrow" />
+    </Box>
+  );
+};
+
 const arrowStyles = (right) => ({
   position: { lg: "absolute" },
-  bottom: "-1.4rem",
-  right: right && "8.55rem",
+  bottom: "-2.5rem",
+  right: right && "3rem",
   color: "#ff2625",
   cursor: "pointer",
   background: "transparent",

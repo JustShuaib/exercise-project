@@ -16,7 +16,6 @@ const BodyPart = ({ item, onFilter, img }) => (
     <img src={img} alt={img} style={{ width: "2.5rem", height: "2.5rem" }} />
     <Typography
       fontSize="1.5rem"
-      fontFamily="Josefin Sans"
       fontWeight="bold"
       color="#ff2625"
       height="2.5rem"

@@ -6,7 +6,7 @@ const ExerciseCard = ({ exercise }) => (
     sx={{
       backgroundColor: "green",
       borderTop: "4px solid #ff2625",
-      width: "min(100%, 24.4rem)",
+      width: "min(85%, 24.4rem)",
       // width: { xs: "100%", lg: "24.4rem" },
       // width: "100%",
       pb: "10px",
@@ -64,7 +64,6 @@ const ExerciseCard = ({ exercise }) => (
       fontSize="1.4rem"
       color="#000"
       pb="0.6rem"
-      fontFamily="Josefin Sans"
     >
       {exercise.name}
     </Typography>

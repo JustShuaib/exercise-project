@@ -19,10 +19,7 @@ const Exercises = ({ exercises }) => {
   if (exercises.length === 0)
     return (
       <Box id="exercises" textAlign="center">
-        <Typography
-          fontSize={{ xs: "1.4rem", lg: "1.8rem" }}
-          fontFamily="Josefin Sans"
-        >
+        <Typography fontSize={{ xs: "1.4rem", lg: "1.8rem" }}>
           No such exercise exist :(
         </Typography>
       </Box>
@@ -35,7 +32,6 @@ const Exercises = ({ exercises }) => {
         textAlign={{ xs: "center", lg: "left" }}
         fontSize="2rem"
         fontWeight={700}
-        fontFamily="Josefin Sans"
       >
         Showing Exercises
       </Typography>
