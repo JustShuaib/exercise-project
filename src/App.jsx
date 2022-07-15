@@ -21,16 +21,14 @@ const myTheme = createTheme({
   },
 });
 const App = () => (
-  <>
-    <ThemeProvider theme={myTheme}>
-      <CssBaseline />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/exercise/:id" element={<ExerciseDetail />} />
-      </Routes>
-      <Footer />
-    </ThemeProvider>
-  </>
+  <ThemeProvider theme={myTheme}>
+    <CssBaseline />
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/exercise/:id" element={<ExerciseDetail />} />
+    </Routes>
+    <Footer />
+  </ThemeProvider>
 );
 export default App;
