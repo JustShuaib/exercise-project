@@ -3,6 +3,7 @@ import { Box, Typography, Grid, Card } from "@mui/material";
 
 import Loader from "./Loader";
 import { fetchData, youTubeOptions } from "../utils/fetchData";
+import HeadingTwo from "../utils/HeadingTwo";
 const YOUTUBE_URL = import.meta.env.VITE_RAPID_API_YOUTUBE_HOST;
 
 const ExerciseVideos = ({ exerciseName }) => {
@@ -25,13 +26,13 @@ const ExerciseVideos = ({ exerciseName }) => {
   if (videos.length === 0) return <Loader />;
   return (
     <Box sx={{ marginTop: { lg: "10rem", xs: "3rem" } }}>
-      <Typography variant="h2" fontSize="1.8rem" textAlign="center" mb="1.5rem">
+      <HeadingTwo>
         Watch{" "}
         <span style={{ color: "#ff2625", textTransform: "capitalize" }}>
           {exerciseName}
         </span>{" "}
         exercise videos
-      </Typography>
+      </HeadingTwo>
       {/* Exercise videos */}
       <Grid
         container
