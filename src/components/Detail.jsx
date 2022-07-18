@@ -69,7 +69,10 @@ const Detail = ({ exerciseDetail }) => {
             >
               <img src={detail.icon} alt={detail.name} width="60%" />
             </Stack>
-            <Typography fontSize="1.5rem" textTransform="capitalize">
+            <Typography
+              fontSize={{ xs: "1.2rem", lg: "1.5rem" }}
+              textTransform="capitalize"
+            >
               {detail.name}
             </Typography>
           </Stack>
