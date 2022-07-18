@@ -24,7 +24,7 @@ const ExerciseVideos = ({ exerciseName }) => {
 
   if (videos.length === 0) return <Loader />;
   return (
-    <Box sx={{ marginTop: { lg: "12rem", xs: "2rem" } }}>
+    <Box sx={{ marginTop: { lg: "10rem", xs: "3rem" } }}>
       <Typography variant="h2" fontSize="1.8rem" textAlign="center" mb="1.5rem">
         Watch{" "}
         <span style={{ color: "#ff2625", textTransform: "capitalize" }}>
