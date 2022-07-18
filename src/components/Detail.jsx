@@ -25,29 +25,29 @@ const Detail = ({ exerciseDetail }) => {
   return (
     <Stack
       gap="3.75rem"
-      sx={{ flexDirection: { lg: "row" }, p: "1.25rem", alignItems: "center" }}
+      sx={{
+        flexDirection: { lg: "row" },
+        p: "1.25rem",
+        alignItems: { xs: "center", lg: "flex-start" },
+      }}
+      justifyContent="space-around"
     >
-      <Box
-        sx={{
-          width: { xs: "18.75rem", lg: "45.56rem" },
-          height: { xs: "18.75rem", lg: "46.375rem" },
-        }}
-      >
+      <Box width={{ lg: "50%" }}>
         <img src={gifUrl} alt={name} loading="lazy" width="100%" />
       </Box>
-      <Stack sx={{ gap: { lg: "2.2rem", xs: "1.25rem" } }}>
+      <Stack sx={{ gap: { xs: "1.25rem", lg: "2.2rem" } }}>
         <Typography
           variant="h1"
           textTransform="capitalize"
           textAlign="center"
-          fontSize="2rem"
+          fontSize={{ xs: "2rem", lg: "2.5rem" }}
         >
           {name}
         </Typography>
-        <Typography px={2}>
+        <Typography px={2} fontSize={{ lg: "1.4rem" }}>
           Exercises keep you strong. {name || "working out"} is one of the best
-          exercises to target your {target || "muscle"}. It will help you
-          improve your mood and gain energy.
+          exercises to target your {target || "muscle"}. <br />
+          It will help you improve your mood and gain energy.
         </Typography>
         {extraDetail.map((detail) => (
           <Stack
@@ -57,21 +57,18 @@ const Detail = ({ exerciseDetail }) => {
             px={2}
             alignItems="center"
           >
-            <Button
-              disabled
+            <Stack
+              justifyContent="center"
+              alignItems="center"
               sx={{
                 backgroundColor: "#fff2db",
                 borderRadius: "50%",
-                width: "6.25rem",
-                height: "6.25rem",
+                width: { xs: "4rem", lg: "6.25rem" },
+                height: { xs: "4rem", lg: "6.25rem" },
               }}
             >
-              <img
-                src={detail.icon}
-                alt={detail.name}
-                style={{ width: "3.125rem", height: "3.125rem" }}
-              />
-            </Button>
+              <img src={detail.icon} alt={detail.name} width="60%" />
+            </Stack>
             <Typography fontSize="1.5rem" textTransform="capitalize">
               {detail.name}
             </Typography>
