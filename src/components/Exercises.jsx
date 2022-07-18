@@ -44,6 +44,7 @@ const Exercises = ({ exercises }) => {
         sx={{
           gap: "3rem",
         }}
+        px="1rem"
       >
         {currentExercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />

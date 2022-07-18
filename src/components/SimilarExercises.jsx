@@ -17,7 +17,6 @@ const SimilarExercises = ({ target, equipment }) => {
         `https://${YOUTUBE_URL}/exercises`,
         exerciseOptions
       );
-
       const exercisesMuscle = exerciseData?.filter(
         (exercise) => exercise.target === target
       );
@@ -36,18 +35,13 @@ const SimilarExercises = ({ target, equipment }) => {
   useEffect(() => {
     fetchExercisesVideos();
   }, []);
-
-  if (!targetMuscleExercises.length || !equipmentExercises.length) {
+  if (targetMuscleExercises.length === 0 || equipmentExercises.length === 0) {
     return <Loader />;
   }
   return (
     <Box mt={10}>
       <HeadingTwo>Exercises that target the same muscle group</HeadingTwo>
-      <Stack
-        // direction="row"
-        mb={{ xs: 4, lg: 6 }}
-        sx={{ p: 2, position: "relative" }}
-      >
+      <Stack mb={{ xs: 4, lg: 6 }} sx={{ p: 2, position: "relative" }}>
         {<HorizontalScrollBar bodyParts={targetMuscleExercises} />}
       </Stack>
       <HeadingTwo>Exercises that use the same equipments</HeadingTwo>

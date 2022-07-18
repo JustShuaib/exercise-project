@@ -39,7 +39,6 @@ const HorizontalScrollbar = ({ bodyParts, isBodyParts, onFilter }) => (
           key={item.id || item}
           itemId={item.id || item}
           title={isBodyParts ? item.id : item.name}
-          bgcolor="yellow"
           mx="1.5rem"
         >
           {isBodyParts ? (
