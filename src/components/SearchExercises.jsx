@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import Search from "./Search";
 
@@ -17,12 +17,12 @@ const SearchExercises = ({ exercises, bodyParts, exerciseList, dispatch }) => {
   };
 
   return (
-    <Stack alignItems="center" justifyContent="center" p={2.8}>
+    <>
       <Typography
         component="h2"
         textAlign="center"
         mb={3}
-        mt={{ xs: 2, lg: 20 }}
+        mt={{ xs: 4, lg: 26 }}
         sx={{
           fontSize: { lg: "2.5rem", xs: "1.8rem" },
         }}
@@ -35,7 +35,7 @@ const SearchExercises = ({ exercises, bodyParts, exerciseList, dispatch }) => {
         onFilter={handleFilter}
         isBodyParts
       />
-    </Stack>
+    </>
   );
 };
 

@@ -1,12 +1,13 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
-const HeadingTwo = ({ children }) => (
+const HeadingTwo = ({ children, ...props }) => (
   <Typography
     variant="h2"
     fontSize="1.8rem"
     textAlign="center"
-    mb={{ xs: 2, lg: 5 }}
+    mb={{ xs: 3, lg: 5 }}
+    {...props}
   >
     {children}
   </Typography>

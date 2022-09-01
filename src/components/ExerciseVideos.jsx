@@ -45,7 +45,7 @@ const ExerciseVideos = ({ exerciseName }) => {
         mb={{ xs: 4, lg: 6 }}
       >
         {videos.map((item, index) => (
-          <Grid item xs={12} lg={4} key={index}>
+          <Grid item xs={12} md={6} lg={4} key={index}>
             <Card
               sx={{
                 minHeight: { lg: "20rem" },
@@ -64,7 +64,10 @@ const ExerciseVideos = ({ exerciseName }) => {
                 href={`https://www.youtube.com/watch?v=${item.video?.videoId}`}
               >
                 <img
-                  src={item.video?.thumbnails[0].url}
+                  src={
+                    item.video?.thumbnails[0].url ||
+                    "https://placeholder.pics/svg/300/DEDEDE/555555/Image"
+                  }
                   alt={item.video?.title}
                   width="100%"
                   style={{ maxHeight: "15rem", objectFit: "cover" }}

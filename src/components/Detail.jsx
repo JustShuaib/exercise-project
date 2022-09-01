@@ -3,6 +3,7 @@ import { Stack, Typography, Box } from "@mui/material";
 import BodyPartImage from "../assets/icons/body-part.png";
 import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/equipment.png";
+import Loader from "./Loader";
 
 const Detail = ({ detail }) => {
   const { bodyPart, gifUrl, name, target, equipment } = detail;
@@ -23,7 +24,7 @@ const Detail = ({ detail }) => {
       name: equipment,
     },
   ];
-
+  if (name.length === 0) return <Loader />;
   return (
     <Stack
       gap="3.75rem"
@@ -35,7 +36,12 @@ const Detail = ({ detail }) => {
       justifyContent="space-around"
     >
       <Box width={{ lg: "50%" }}>
-        <img src={gifUrl} alt={name} loading="lazy" width="100%" />
+        <img
+          src={gifUrl || "https://placeholder.pics/svg/300/DEDEDE/555555/Image"}
+          alt={name}
+          loading="lazy"
+          width="100%"
+        />
       </Box>
       <Stack sx={{ gap: { xs: "1.25rem", lg: "2.2rem" } }}>
         <Typography

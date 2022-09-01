@@ -1,8 +1,8 @@
+import React from "react";
 import { Stack, Typography } from "@mui/material";
 
 const BodyPart = ({ item, onFilter, img }) => (
   <Stack
-    type="button"
     alignItems="center"
     justifyContent="center"
     sx={{
@@ -10,7 +10,7 @@ const BodyPart = ({ item, onFilter, img }) => (
       width: "16.875rem",
       height: "17.5rem",
       gap: "3rem",
-      mx: { lg: "1rem" },
+      // mx: { lg: "1rem" },
       cursor: "pointer",
       borderBottomLeftRadius: "1.4rem",
       transition: "all 0.3s ease-in-out",

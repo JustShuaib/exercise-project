@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Stack } from "@mui/material";
-import { ThreeDots } from "react-loader-spinner";
+import Box from "@mui/material/Box";
 import Detail from "../components/Detail";
 import ExerciseVideos from "../components/ExerciseVideos";
 import SimilarExercises from "../components/SimilarExercises";
@@ -32,20 +31,7 @@ const ExerciseDetail = () => {
   }, []);
 
   const { name, target, equipment } = detail;
-  if (Object.keys(detail).length === 0) {
-    return (
-      <Stack
-        component="main"
-        justifyContent="center"
-        height="50vh"
-        width="100%"
-        bgcolor="#fff3f4"
-        alignItems="center"
-      >
-        <ThreeDots color="#ff2625" width={100} height={100} />
-      </Stack>
-    );
-  }
+
   return (
     <Box component="main">
       <Detail detail={detail} />

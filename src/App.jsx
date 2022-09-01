@@ -5,12 +5,9 @@ import ExerciseDetail from "./routes/ExerciseDetail";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-// import {  } from '@mui/material/colors/';
 const myTheme = createTheme({
   typography: {
     fontFamily: "Source Sans Pro",
-    // allVariants: {
-    // },
   },
   components: {
     MuiCssBaseline: {

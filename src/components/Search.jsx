@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, FormControl, OutlinedInput } from "@mui/material";
 
 const Search = ({ dispatch, exercises }) => {
   const [search, setSearch] = React.useState("");
@@ -7,12 +7,13 @@ const Search = ({ dispatch, exercises }) => {
     e.preventDefault();
     const searchTerm = search.toLowerCase();
     if (searchTerm) {
+      const term = searchTerm.toLowerCase();
       const searchExercises = exercises.filter(
-        (exercise) =>
-          exercise.name.toLowerCase().includes(searchTerm) ||
-          exercise.target.toLowerCase().includes(searchTerm) ||
-          exercise.equipment.toLowerCase().includes(searchTerm) ||
-          exercise.bodyPart.toLowerCase().includes(searchTerm)
+        ({ name, target, equipment, bodyPart }) =>
+          name.toLowerCase().includes(term) ||
+          target.toLowerCase().includes(term) ||
+          equipment.toLowerCase().includes(term) ||
+          bodyPart.toLowerCase().includes(term)
       );
       setSearch("");
       dispatch({ type: "SEARCH", payload: searchExercises });
@@ -22,45 +23,35 @@ const Search = ({ dispatch, exercises }) => {
 
   return (
     <Box
-      component="form"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
       position="relative"
       mb="4.5rem"
-      width="100%"
-      maxWidth="59.4rem"
-      onSubmit={handleSearch}
     >
-      <TextField
-        sx={{
-          input: {
-            height: { lg: "1.5rem", xs: "1rem" },
-            fontSize: { xs: "1.2rem", lg: "1.4rem" },
-          },
-          width: "70%",
-          backgroundColor: "white",
-        }}
-        value={search}
-        onChange={(e) => setSearch(e.target.value.toLowerCase())}
-        placeholder="Search Exercises..."
-        type="text"
-      />
-      <Button
-        type="submit"
-        sx={{
-          bgcolor: "#ff2625",
-          color: "#fff",
-          width: "30%",
-          fontSize: { lg: "1.2rem", xs: "0.8rem" },
-          height: "100%",
-          position: "absolute",
-          right: "0",
-          "&:hover": {
-            color: "#ff2625",
-            border: "1px solid #ff2625",
-          },
-        }}
-      >
-        Search
-      </Button>
+      <FormControl onSubmit={handleSearch}>
+        <OutlinedInput
+          value={search}
+          sx={{
+            width: { xs: "70vw", lg: "50vw" },
+          }}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          placeholder="Search Exercises..."
+          endAdornment={
+            <Button
+              size="large"
+              type="submit"
+              onClick={handleSearch}
+              sx={{
+                color: "#ff2625",
+                px: { xs: "0.8rem", lg: "1.2rem" },
+              }}
+            >
+              Search
+            </Button>
+          }
+        />
+      </FormControl>
     </Box>
   );
 };

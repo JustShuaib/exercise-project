@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { Box, Stack, Typography } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import CardBtn from "../utils/CardBtn";
 
 const ExerciseCard = ({ exercise, home }) => (
   <Box
+    title={exercise.name}
     sx={{
+      // width: "24.4rem",
       backgroundColor: "#FFFF",
       borderTop: "4px solid #ff2625",
-      width: "min(100%, 24.4rem)",
       pb: "0.7rem",
       borderBottomLeftRadius: "1.6rem",
       transition: "all 0.3s ease-in-out",
@@ -27,12 +29,12 @@ const ExerciseCard = ({ exercise, home }) => (
         src={exercise.gifUrl}
         loading="lazy"
         alt={exercise.name}
-        width={home ? "100%" : "auto"}
+        width="100%"
       />
 
       <Stack direction="row">
         <CardBtn background="#ffa9a9">{exercise.bodyPart}</CardBtn>
-        <CardBtn background="#fcc757">{exercise.target}</CardBtn>
+        <CardBtn background={blue[300]}>{exercise.target}</CardBtn>
       </Stack>
       <Typography
         ml="1.4rem"

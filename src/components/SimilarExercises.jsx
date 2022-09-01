@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Box, Stack } from "@mui/material";
+import { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
 import HeadingTwo from "../utils/HeadingTwo";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import Loader from "./Loader";
@@ -34,16 +34,13 @@ const SimilarExercises = ({ target, equipment }) => {
     return <Loader />;
   }
   return (
-    <Box mt={10}>
+    <Box mt={10} px={2}>
       <HeadingTwo>Exercises that target the same muscle group</HeadingTwo>
-      <Stack mb={{ xs: 4, lg: 6 }} sx={{ p: 2, position: "relative" }}>
-        <HorizontalScrollBar bodyParts={targetMuscleExercises} />
-      </Stack>
+      <HorizontalScrollBar bodyParts={targetMuscleExercises} />
 
-      {/* <HeadingTwo>Exercises that use the same equipments</HeadingTwo>
-      <Stack direction="row" sx={{ p: 2, position: "relative" }}>
-        <HorizontalScrollBar bodyParts={equipmentExercises} />
-      </Stack> */}
+      <HeadingTwo mt={2}>Exercises that use the same equipments</HeadingTwo>
+
+      <HorizontalScrollBar bodyParts={equipmentExercises} />
     </Box>
   );
 };
