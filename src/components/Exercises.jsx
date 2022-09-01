@@ -44,10 +44,10 @@ const Exercises = ({ exercises }) => {
         sx={{
           gap: "3rem",
         }}
-        px="1rem"
+        p="1rem"
       >
         {currentExercises.map((exercise, index) => (
-          <ExerciseCard key={index} exercise={exercise} />
+          <ExerciseCard key={index} exercise={exercise} home />
         ))}
       </Stack>
 

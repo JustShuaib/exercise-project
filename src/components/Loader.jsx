@@ -8,7 +8,7 @@ const Loader = ({ home }) => {
       justifyContent="center"
       alignItems="center"
       width="100%"
-      mt={home && { xs: "4rem", lg: "8rem" }}
+      mt={home && { xs: "4rem", lg: "12rem" }}
     >
       <TailSpin color="#ff2625" height={60} width={60} />
     </Stack>

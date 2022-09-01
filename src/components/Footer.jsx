@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Stack, Typography } from "@mui/material";
 import Logo from "../assets/icons/logo.png";
@@ -15,7 +16,11 @@ const Footer = () => (
     <Link to="/">
       <img src={Logo} alt="logo" width="80rem" />
     </Link>
-    <Typography fontSize={{ xs: "1.4rem", lg: "1.6rem" }} textAlign="center">
+    <Typography
+      fontFamily="Josefin Sans"
+      fontSize={{ xs: "1.4rem", lg: "1.6rem" }}
+      textAlign="center"
+    >
       Made with ❤️ by{" "}
       <a
         href="https://www.github.com/JustShuaib"

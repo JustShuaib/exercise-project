@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid, Card } from "@mui/material";
 
 import Loader from "./Loader";
@@ -10,18 +10,21 @@ const ExerciseVideos = ({ exerciseName }) => {
   const [videos, setVideos] = useState([]);
   const getVideos = async () => {
     try {
-      const exerciseVideosData = await fetchData(
-        `https://${YOUTUBE_URL}/search?query=${exerciseName}`,
-        youTubeOptions
-      );
+      const exerciseVideosData =
+        exerciseName &&
+        (await fetchData(
+          `https://${YOUTUBE_URL}/search?query=${exerciseName}`,
+          youTubeOptions
+        ));
       setVideos(exerciseVideosData.contents.splice(0, 6));
     } catch {
       setVideos([]);
     }
   };
+
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [exerciseName]);
 
   if (videos.length === 0) return <Loader />;
   return (
@@ -33,7 +36,8 @@ const ExerciseVideos = ({ exerciseName }) => {
         </span>{" "}
         exercise videos
       </HeadingTwo>
-      {/* Exercise videos */}
+
+      {/*  videos */}
       <Grid
         container
         spacing={{ xs: 4, lg: 8 }}
@@ -42,8 +46,19 @@ const ExerciseVideos = ({ exerciseName }) => {
       >
         {videos.map((item, index) => (
           <Grid item xs={12} lg={4} key={index}>
-            <Card sx={{ minHeight: "20rem" }}>
+            <Card
+              sx={{
+                minHeight: { lg: "20rem" },
+                pb: "0.5rem",
+                transition: "all 0.2s ease",
+                "&:hover": {
+                  transform: { lg: "scale(1.1)" },
+                  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px;",
+                },
+              }}
+            >
               <a
+                style={{ textDecoration: "none", color: "#000" }}
                 target="_blank"
                 rel="noopener"
                 href={`https://www.youtube.com/watch?v=${item.video?.videoId}`}
@@ -52,14 +67,16 @@ const ExerciseVideos = ({ exerciseName }) => {
                   src={item.video?.thumbnails[0].url}
                   alt={item.video?.title}
                   width="100%"
+                  style={{ maxHeight: "15rem", objectFit: "cover" }}
                 />
-              </a>
-              <Box>
-                <Typography variant="h3" fontSize="1.5rem" px={1.5}>
-                  {item.video?.title}
+
+                <Typography variant="h3" mb={1} fontSize="1.5rem" px={1.5}>
+                  {formatName(item.video?.title)}
                 </Typography>
-                <Typography px={1.5}>{item.video?.channelName}</Typography>
-              </Box>
+                <Typography px={1.5}>
+                  {formatName(item.video?.channelName)}
+                </Typography>
+              </a>
             </Card>
           </Grid>
         ))}
@@ -69,3 +86,8 @@ const ExerciseVideos = ({ exerciseName }) => {
 };
 
 export default ExerciseVideos;
+
+const formatName = (str) => {
+  if (str.length > 65) return str.slice(0, 60) + "...";
+  return str;
+};
